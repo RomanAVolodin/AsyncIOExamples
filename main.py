@@ -109,6 +109,7 @@ async def main_next_next_next():
 async def main_next_next():
     my_future = Future()
     print(my_future.done())  # Результат ещё не получен, поэтому Future счиатется невыполненной
+    # print(my_future.result()) # asyncio.exceptions.InvalidStateError: Result is not set.
     my_future.set_result('Результат')
     print(my_future.done())  # Теперь Future завершена
     print(my_future.result())
@@ -123,9 +124,9 @@ if __name__ == '__main__':
     asyncio.run(main_next())
     print(time.time() - start)
 
-    print('=======================')
+    print('=========== main_next_next ============')
     asyncio.run(main_next_next())
 
-    print('=======================')
+    print('=========== main_next_next_next ============')
     asyncio.run(main_next_next_next())
 
